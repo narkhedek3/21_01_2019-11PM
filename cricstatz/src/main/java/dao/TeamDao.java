@@ -11,11 +11,11 @@ import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
+import dto.Team;
 import dto.Tournament;
 
 @Repository
-public class TournamentsDao {
-	
+public class TeamDao {
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
 
@@ -29,12 +29,12 @@ public class TournamentsDao {
 		this.hibernateTemplate = hibernateTemplate;
 	}
 
-	public void createTournament(final Tournament tournament) {
-		hibernateTemplate.execute(new HibernateCallback<List<Tournament>>() {
+	public void createTeam(final Team team) {
+		hibernateTemplate.execute(new HibernateCallback<List<Team>>() {
 
-			public List<Tournament> doInHibernate(Session session) throws HibernateException {
+			public List<Team> doInHibernate(Session session) throws HibernateException {
 				Transaction t = session.beginTransaction();
-				session.save(tournament);
+				session.save(team);
 				t.commit();
 				session.flush();
 				session.close();
@@ -42,21 +42,23 @@ public class TournamentsDao {
 			}
 		});
 	}
-	
-	public List<Tournament> selectTournaments() {
-		
-		List<Tournament> list = hibernateTemplate.execute(new HibernateCallback<List<Tournament>>() {
 
-			public List<Tournament> doInHibernate(Session session) throws HibernateException {
+
+	public List<Team> selectTeam() {
+
+		List<Team> list = hibernateTemplate.execute(new HibernateCallback<List<Team>>() {
+
+			public List<Team> doInHibernate(Session session) throws HibernateException {
 				Transaction t = session.beginTransaction();
-				Query q = session.createQuery("from Tournament");
-				List<Tournament> tournamentList = q.list();
+				Query q = session.createQuery("from Team");
+				List<Team> teamList = q.list();
 				t.commit();
 				session.flush();
 				session.close();
-				return tournamentList;
+				return teamList;
 			}
 		});
 		return list;
 	}
+
 }

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="spr" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -43,43 +43,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="agile_team_grids_top">
 				<div class="col-md-6 w3ls_banner_bottom_left w3ls_courses_left">
-
-					<form style="font-size: 20px">
-						<table style="align-content: center;">
-
-
-
-							<tr>
-								<td>Team Name:<br> <input type="text" id="Team"><br>
-								</td>
-							</tr>
-
-							<tr>
-								<td>Team EmailId:<br> <input type="text"
-									id="TeamEmail"><br>
-
-								</td>
-							</tr>
-							<tr>
-								<td>Password:<br> <input type="password" id="Password"><br>
-								</td>
-							</tr>
-
-							<tr>
-								<td>Confirm Password:<br> <input type="password"
-									id="Repassword"><br>
-								</td>
-							</tr>
-							<tr>
-								<td><br> <input type="submit" value="submit">
-								</td>
-								<td><br> <input type="submit" value="submit">
-								</td>
-							</tr>
-						</table>
-
-					</form>
-
+					
+					<spr:form action="postTeamForm.htm" method="post" commandName="team">
+						<label>Team Name</label>
+						<spr:input class="form-control" path="teamName"/>
+						
+						<label>Email Id</label>
+						<spr:input class="form-control" path="emailId"/>
+						
+						<label>Password</label>
+						<spr:input class="form-control" path="password"/>
+						
+						<label>Confirm Password</label>
+						<spr:input class="form-control" path="password"/>
+						
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</spr:form>
+					
 				</div>
 				<div class="col-md-6 agileits_courses_right">
 					<img src="images/2.jpg" alt=" " class="img-responsive" />

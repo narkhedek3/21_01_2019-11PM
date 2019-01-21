@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="dto.Team"%>
+<%@page import="java.util.List"%>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -36,17 +39,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     <!--card-->
 
+<%
+		List<Team> list = (List<Team>)request.getAttribute("teamList");
+		if(list!=null)
+		{
+			for(Team team: list)
+			{
+		%>
 
     <div class="container" style="width:300px; height: 260px;border: 2px solid black;">
-
+				
         <div class="card ">
             <div class="make-center ">
 
                 <img src="images/live.jpg" alt="Card image" style="width:90px;height: 90px; padding-top: 10px;">
             </div>
-
+			
             <div class="card-header" style="text-align: center">
-                <h3> TOURNAMENT NAME </h3>
+                <h3><%=team.getTeamName() %></h3>
             </div>
             <div class="card-body" style="width:100%">
                 <h4 class="make-center" style="background: #09347a;; color:whitesmoke;width: 100%">
@@ -77,8 +87,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     </div>
 
-
-
+<%
+			}
+		}
+%>
 
 
     <!--card end-->

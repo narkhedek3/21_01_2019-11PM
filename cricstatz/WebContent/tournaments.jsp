@@ -1,3 +1,5 @@
+<%@page import="dto.Tournament"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -40,9 +42,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     <!--card-->
 
-
+	<%  List<Tournament> list = (List<Tournament>)request.getAttribute("tournamentList");
+		if(list!=null)
+		{
+			for(Tournament tournament: list)
+			{
+	%>
+	
     <div class="container" style="width:300px; height: 260px;border: 2px solid black;">
-
+	
         <div class="card ">
             <div class="make-center ">
 
@@ -50,17 +58,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
 
             <div class="card-header" style="text-align: center">
-                <h3><b> TOURNAMENT NAME </b></h3>
+                <h3><b> <%=tournament.getTournamentName() %> </b></h3>
             </div>
             <div class="card-body" style="width:100%">
                 <h4 class="make-center" style="background: #09347a;; color:whitesmoke;width: 100%;font-size:15px">
 
 
                     <ul style="list-style-type:none ; text-align: center">
-                        <li>LOCATION</li>
-                        <li>PRIZE</li>
-                        <li>ENTRY FEE</li>
-                        <li>CLOSES ON </li>
+                        <li><%=tournament.getAddress()+ " , " + tournament.getLocation()%></li>
+                        <li> <h4> <%=tournament.getWinningPrize() %> </h4> </li>
+                        <li><%= tournament.getEntryFee() %></li>
+                        <li><%= tournament.getRegistrationEndDate() %></li>
 
                     </ul>
                 </h4>
@@ -80,6 +88,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
 
 
+<%
+		}
+	}
+%>
 
 
 

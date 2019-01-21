@@ -15,6 +15,8 @@ public class Team {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long teamId;
 	private String emailId;
+	private String password;
+	
 	private String teamName;
 	private String teamStatus;
 	private double currentRunrate;
@@ -34,6 +36,23 @@ public class Team {
 		super();
 		this.teamId = teamId;
 	}
+	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getTeamStatus() {
+		return teamStatus;
+	}
+
+	public void setTeamStatus(String teamStatus) {
+		this.teamStatus = teamStatus;
+	}
+
 
 	public Team(String emailId, long teamId, String teamName, String status, double currentRunrate, long tournamentId,
 			Date matchDate, String teamInningStatus, int totalMatches, String totalMatchResults, double netRunRate,

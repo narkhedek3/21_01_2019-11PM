@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import dao.TeamDao;
 import dao.TournamentsDao;
+import dto.Team;
 import dto.Tournament;
 
 
@@ -18,7 +20,17 @@ public class UserController {
 
 	@Autowired
 	private TournamentsDao tournamentsDao;
+	@Autowired
+	private TeamDao teamDao;
 	
+	public TeamDao getTeamDao() {
+		return teamDao;
+	}
+
+	public void setTeamDao(TeamDao teamDao) {
+		this.teamDao = teamDao;
+	}
+
 	public TournamentsDao getTournamentsDao() {
 		return tournamentsDao;
 	}
@@ -54,19 +66,39 @@ public class UserController {
 		return "tournaments";
 	}
 
-
+	@RequestMapping(value="/tournaments.htm")
+	public String showTournamentList(ModelMap model) {
+		List<Tournament> tournamentList = tournamentsDao.selectTournaments();
+		model.put("tournamentList",tournamentList);
+		return "tournaments";
+	}
+	
 	@RequestMapping(value="/playersList.htm")
 	public String showplayersList() {
 
 		return "playersList";
 	}
-
-	@RequestMapping(value="/teamList.htm")
-	public String showteamList() {
-
+	
+	@RequestMapping(value="/preTeamForm.htm")
+	public String showTeamForm(ModelMap model) {
+		model.put("team", new Team());
+		return "teamForm";
+	}
+	
+	@RequestMapping(value="/postTeamForm.htm")
+	public String TeamFormSuccess(Team team,ModelMap model) {
+		teamDao.createTeam(team);
+		model.put("team", team);
 		return "teamList";
 	}
-
+	
+	@RequestMapping(value="/teamList.htm")
+	public String showteamList(ModelMap model) {
+		List<Team> teamList = teamDao.selectTeam();
+		model.put("teamList", teamList);
+		return "teamList";
+	}
+	
 	@RequestMapping(value="/about.htm")
 	public String showabout() {
 

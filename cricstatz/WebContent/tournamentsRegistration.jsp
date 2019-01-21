@@ -69,10 +69,17 @@
 			</div>
 			
 			 
-			<div class="form-group">
-				<label>Number Of Teams</label>
-				<spr:input type="number" class="form-control" path="numberOfTeams" />
-			</div>		
+		<div class="form-group">
+				<label>Number Of Teams</label> 
+				<spr:select class="form-control"
+					path="numberOfTeams">
+					<spr:option value="0">Choose...</spr:option>
+					<spr:option value="4">4</spr:option>
+					<spr:option value="8">8</spr:option>
+					<spr:option value="16">16</spr:option>
+					<spr:option value="32">32</spr:option>
+				</spr:select>
+			</div>
 			
 			<div class="form-group">
 				<label>Entry Fee</label>

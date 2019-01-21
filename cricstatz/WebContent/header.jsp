@@ -106,7 +106,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </ul>
                         </li>
                         <li><a href="playersList.htm"><span data-hover="Players">Players</span></a></li>
-                        <li><a href="teamList.htm"><span data-hover="Teams">Teams</span></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span data-hover="Teams">Teams</span>
+                                <b class="caret"></b></a>
+                            <ul class="dropdown-menu agile_short_dropdown">
+                                <li><a href="preTeamForm.htm" >Create Team</a></li>
+                                <li><a href="teamList.htm">Teams List</a></li>
+                            </ul>
+                        </li>
+                       <!--   <li><a href="teamList.htm"><span data-hover="Teams">Teams</span></a></li>-->
                         <li class="active"><a href="about.htm"><span data-hover="About Us">About Us</span></a></li>
 
                     </ul>
