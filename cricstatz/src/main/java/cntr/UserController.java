@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import dao.TeamDao;
 import dao.TournamentsDao;
+import dao.UserDao;
 import dto.Team;
 import dto.Tournament;
+import dto.User;
 
 
 @Controller
@@ -22,7 +24,17 @@ public class UserController {
 	private TournamentsDao tournamentsDao;
 	@Autowired
 	private TeamDao teamDao;
+	@Autowired
+	private UserDao userDao;
 	
+	public UserDao getUserDao() {
+		return userDao;
+	}
+
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
 	public TeamDao getTeamDao() {
 		return teamDao;
 	}
@@ -44,8 +56,21 @@ public class UserController {
 
 		return "index";
 	}
-
-
+	@RequestMapping(value="/loginSignup.htm")
+	public String loginSignupform(ModelMap model) {
+		model.put("user", new User());
+		return "loginSignup";
+	}
+	
+	@RequestMapping(value="/signup.htm")
+	public String regSignup(User user,ModelMap model) {
+		userDao.createUser(user);
+		model.put("user", user);
+		return "index";
+	}
+	
+	
+	
 
 	@RequestMapping(value="/livescores.htm")
 	public String showLiveScores() {

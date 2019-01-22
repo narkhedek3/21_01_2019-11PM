@@ -50,7 +50,7 @@
 
 			<div class="form-group">
 				<label>Registration Start Date</label>
-				<spr:input type="text" class="form-control" path="registrationStartDate" placeholder="dd/mm/yyyy"/>
+				<spr:input type="date" date-date-format="YYYY-MM-DD"   class="form-control" path="registrationStartDate" placeholder="yyyy-mm-dd"/>
 			</div> 
 			
 			<div class="form-group">

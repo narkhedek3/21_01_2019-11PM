@@ -1,10 +1,18 @@
 package dto;
 
+
+
+
+
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="Tournament")
@@ -15,7 +23,8 @@ public class Tournament {
 	private long tournamentId;
 	private String emailId;
 	private String tournamentName;
-	private String registrationStartDate;
+	@Temporal(TemporalType.DATE)
+	private Date registrationStartDate;
 	private String registrationEndDate;
 	private String tournamentStartDate;
 	private String tournamentEndDate;
@@ -36,7 +45,7 @@ public class Tournament {
 
 	
 
-	public Tournament(long tournamentId, String emailId, String tournamentName, String registrationStartDate,
+	public Tournament(long tournamentId, String emailId, String tournamentName, Date registrationStartDate,
 			String registrationEndDate, String tournamentStartDate, String tournamentEndDate, int numberOfTeams, int entryFee,
 			int winningPrize, String location, String address) {
 		super();
@@ -70,11 +79,11 @@ public class Tournament {
 		this.tournamentName = tournamentName;
 	}
 
-	public String getRegistrationStartDate() {
+	public Date getRegistrationStartDate() {
 		return registrationStartDate;
 	}
 
-	public void setRegistrationStartDate(String registrationStartDate) {
+	public void setRegistrationStartDate(Date registrationStartDate) {
 		this.registrationStartDate = registrationStartDate;
 	}
 
