@@ -37,33 +37,46 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //banner -->
 	<!-- Players List -->
 	
-	<div style="display: flex">
-		<div style="flex:1">
-		</div>
-		<div style="margin-top:10px">
-			<input type="text" style="border-radius: 10px" placeholder="Player Search" id="Search">
-			
-			<button type="submit" id="show" class="btn btn-primary" value="search">Search</button>
-		</div>
-	</div>
+	
 
 	<br />
 
 
-	
-	<div >
-	<table>
-		
-	
-	</table>
-	
+<div class="container" style="width:300px; height: 140px;border: 2px solid black;">
+
+		<div class="card ">
+			
+
+			<div class="card-header" style="text-align: center">
+				<h3> TOURNAMENT NAME </h3>
+			</div>
+			<br>
+			<div class="card-body" style="width:100%" ">
+						
+						<h4 style="text-align: center">Team1 VS Team2</h4> 
+				
+			</div>
+			<br>
+			<div class="card-footer make-center">
+			<h4 class="make-center" style="background: #09347a;; color:whitesmoke;width: 100%">
+				<span>Team1:</span> &nbsp;
+				<span>100</span> &nbsp;
+				<span>/</span> &nbsp;
+				<span>3</span> &nbsp;
+
+
+			</div>
+			
+		</div>
 	</div>
+	<br>
+	
 
 	<div style="margin-left: 250px; margin-right: 250px">
 		<table class="table table-sm table-primary" style="border-top: 1px solid gray">
 			<thead>
-			<h1><b>Batsman</b></h1>
-			<br>
+			<h3><b>Batsman</b></h3>
+			
 				<tr>
 				
 					<th scope="col">Name</th>
@@ -94,8 +107,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div style="margin-left: 250px; margin-right: 250px">
 		<table class="table table-sm table-primary" style="border-top: 1px solid gray">
 			<thead>
-			<h1><b>Bowler</b></h1>
-			<br>
+			<h3><b>Bowler</b></h3>
+	
 				<tr>
 				
 					<th scope="col">Name</th>
