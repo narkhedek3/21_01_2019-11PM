@@ -23,8 +23,8 @@ public class Tournament {
 	private long tournamentId;
 	private String emailId;
 	private String tournamentName;
-	@Temporal(TemporalType.DATE)
-	private Date registrationStartDate;
+	//@Temporal(TemporalType.DATE)
+	private String registrationStartDate;
 	private String registrationEndDate;
 	private String tournamentStartDate;
 	private String tournamentEndDate;
@@ -45,7 +45,7 @@ public class Tournament {
 
 	
 
-	public Tournament(long tournamentId, String emailId, String tournamentName, Date registrationStartDate,
+	public Tournament(long tournamentId, String emailId, String tournamentName, String registrationStartDate,
 			String registrationEndDate, String tournamentStartDate, String tournamentEndDate, int numberOfTeams, int entryFee,
 			int winningPrize, String location, String address) {
 		super();
@@ -79,11 +79,11 @@ public class Tournament {
 		this.tournamentName = tournamentName;
 	}
 
-	public Date getRegistrationStartDate() {
+	public String getRegistrationStartDate() {
 		return registrationStartDate;
 	}
 
-	public void setRegistrationStartDate(Date registrationStartDate) {
+	public void setRegistrationStartDate(String registrationStartDate) {
 		this.registrationStartDate = registrationStartDate;
 	}
 

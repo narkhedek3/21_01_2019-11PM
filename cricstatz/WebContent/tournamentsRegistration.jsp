@@ -50,22 +50,22 @@
 
 			<div class="form-group">
 				<label>Registration Start Date</label>
-				<spr:input type="date" date-date-format="YYYY-MM-DD"   class="form-control" path="registrationStartDate" placeholder="yyyy-mm-dd"/>
+				<spr:input type="date"    class="form-control" path="registrationStartDate" placeholder="yyyy-mm-dd"/>
 			</div> 
 			
 			<div class="form-group">
 				<label>Registration End Date</label>
-				<spr:input type="text" class="form-control" path="registrationEndDate" placeholder="dd/mm/yyyy"/>
+				<spr:input type="date" class="form-control" path="registrationEndDate" placeholder="dd/mm/yyyy"/>
 			</div>
 			
 			<div class="form-group">
 				<label>Tournament Start Date</label>
-				<spr:input type="text" class="form-control" path="tournamentStartDate" placeholder="dd/mm/yyyy"/>
+				<spr:input type="date" class="form-control" path="tournamentStartDate" placeholder="dd/mm/yyyy"/>
 			</div>
 			
 			<div class="form-group">
 				<label>Tournament End Date</label>
-				<spr:input type="text" class="form-control" path="tournamentEndDate" placeholder="dd/mm/yyyy"/>
+				<spr:input type="date" class="form-control" path="tournamentEndDate" placeholder="dd/mm/yyyy"/>
 			</div>
 			
 			 

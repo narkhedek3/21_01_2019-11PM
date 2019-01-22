@@ -152,6 +152,12 @@ public class UserController {
 		return "teamList";
 	}
 	
+	@RequestMapping(value="/viewScoreCard.htm")
+	public String showScoreCard() {
+
+		return "scoreCard";
+	}
+	
 	@RequestMapping(value="/about.htm")
 	public String showabout() {
 

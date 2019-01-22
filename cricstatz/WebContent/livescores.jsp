@@ -74,7 +74,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			</div>
 			<div class="make-center">
-				<a href="#" class="btn btn-primary "> View ScoreCard</a>
+				<a href="viewScoreCard.htm" class="btn btn-primary "> View ScoreCard</a>
 			</div>
 		</div>
 	</div>
