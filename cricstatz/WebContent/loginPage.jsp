@@ -44,9 +44,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!-- //banner -->
-	<!-- login sign up  -->
-
-
+	
+	
+	
 	<div class="signin-form profile">
 		<h3 class="agileinfo_sign">Sign In</h3>
 		<div class="login-form">
@@ -59,16 +59,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<spr:option value="Tournament Representative"></spr:option>
 					<spr:option value="Team Representative"></spr:option>
 				</spr:select>
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<div class="tp">
+					<input type="submit" value="Log In">
+				</div>
 			</spr:form>
 		</div>
 	</div>
-
-
-
-
-	<!-- login sign up -->
-
 
 
 

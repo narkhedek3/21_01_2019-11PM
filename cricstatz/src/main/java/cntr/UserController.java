@@ -1,9 +1,7 @@
 package cntr;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -56,21 +54,51 @@ public class UserController {
 
 		return "index";
 	}
-	@RequestMapping(value="/loginSignup.htm")
-	public String loginSignupform(ModelMap model) {
+	
+	@RequestMapping(value="/teamProfile.htm")
+	public String showTeamProfile() {
+		return "teamProfile";
+	}
+	
+	@RequestMapping(value="/loginPage.htm")
+	public String loginform(ModelMap model) {
 		model.put("user", new User());
-		return "loginSignup";
+		return "loginPage";
+	}
+	
+	@RequestMapping(value="/signUpPage.htm")
+	public String SignUpform(ModelMap model) {
+		model.put("user", new User());
+		return "signUpPage";
 	}
 	
 	@RequestMapping(value="/signup.htm")
-	public String regSignup(User user,ModelMap model) {
+	public String CreateUser(final User user) {
 		userDao.createUser(user);
-		model.put("user", user);
-		return "index";
+		return "loginPage";
 	}
 	
 	
-	
+	@RequestMapping(value="/loginStatus.htm")
+	public String validateUser(final User user ,ModelMap model) {
+		List<User> list = userDao.login(user);
+		if( list.isEmpty() )
+		{
+			model.put("user", new User());
+			return "loginPage";
+		}
+		
+		for(User u : list) 
+		{
+			if(u.getUserRole().equals("Tournament Representative"))
+			{
+				return "tournamentProfile";
+			}
+			return "teamProfile";
+		}
+		
+		return "loginPage";
+	}
 
 	@RequestMapping(value="/livescores.htm")
 	public String showLiveScores() {

@@ -15,8 +15,7 @@ public class Team {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long teamId;
 	private String emailId;
-	private String password;
-	
+	private String password;	
 	private String teamName;
 	private String teamStatus;
 	private double currentRunrate;

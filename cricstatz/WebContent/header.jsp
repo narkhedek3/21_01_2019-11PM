@@ -6,7 +6,7 @@
 <html lang="zxx">
 
 <head>
-    <title>Tennis Court a Sports Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    
     <!-- custom-theme -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -36,9 +36,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         <div class="w3layouts_header_left">
             <ul>
-                <li><a href="loginSignup.htm" ><i class="fa fa-user" aria-hidden="true"></i>
+                <li><a href="loginPage.htm" ><i class="fa fa-user" aria-hidden="true"></i>
                         Log in</a></li>
-                <li><a href="loginSignup.htm" ><i class="fa fa-pencil-square-o"
+                <li><a href="signUpPage.htm" ><i class="fa fa-pencil-square-o"
                             aria-hidden="true"></i>
                         Sign up</a></li>
                 <li>

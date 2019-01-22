@@ -36,31 +36,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!-- //banner -->
-	<!-- login sign up  -->
+	
+	
+	
+	<!-- sign up  -->
 
-	<table style="border: 1px solid black;">
-		<tr>
-			<td>
-				<div class="signin-form profile">
-					<h3 class="agileinfo_sign">Sign In</h3>
-					<div class="login-form">
-						<spr:form commandName="user" action="loginStatus.htm" method="post">
-							<spr:input placeholder="Email Id" required="" path="emailId" />
-							<spr:input type="password" placeholder="Password" required=""
-								path="password" />
-							<spr:select path="userRole" id="inputState" class="form-control">
-								<spr:option value="Choose"></spr:option>
-								<spr:option value="Tournament Representative"></spr:option>
-								<spr:option value="Team Representative"></spr:option>
-							</spr:select>
-							<button type="submit" class="btn btn-primary">Submit</button>
-						</spr:form>
-					</div>
-
-
-				</div>
-			</td>
-			<td rowspan="2" style="height: 650px">
+	
+			
 				<div class="signin-form profile">
 					<h3 class="agileinfo_sign">Sign Up</h3>
 					<div class="login-form">
@@ -84,22 +66,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						</spr:form>
 					</div>
-					<p>By clicking register, I agree to your terms</p>
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div style="height: 300px; background-color: white; margin: 0px">
-
-				</div>
-			</td>
-		</tr>
-	</table>
+		
 
 
 
-	<!-- login sign up -->
+	<!--  sign up -->
     
 
 
