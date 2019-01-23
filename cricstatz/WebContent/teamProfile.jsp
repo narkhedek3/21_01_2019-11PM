@@ -95,7 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			
 			<div>
-				<button class="btn btn-primary"  data-toggle="modal" data-target="#myModal4">Add Player</button>
+				<a class="btn btn-primary"  href="playerForm.htm">Add Player</a>
 			</div>
 
 		</div>
@@ -109,35 +109,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	
 	
-	<!-- Modal4 -->
-	<div class="modal fade" id="myModal4" tabindex="-1" role="dialog">
-		<div class="modal-dialog">
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
 
-					<div class="signin-form profile">
-						<h3 class="agileinfo_sign">Add Player Info </h3>
-						<div class="login-form">
-							<form action="#" method="post">
-								<input type="text" name="name" placeholder="Player Name"required=""> 
-								<input type="text" name="age" placeholder="Player Age" required=""> 
-								<input type="text" name="location" placeholder="Location" required="">
-								<input type="text" name="jerseyno" placeholder="Jersey No." required=""> 
-													 
-									 <input type="submit" value="Add Player">
-							</form>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- //Modal4 -->
 
-	<!-- //bootstrap-pop-up -->
+
 
 	<!-- js -->
 	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>

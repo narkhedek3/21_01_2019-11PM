@@ -2,14 +2,18 @@ package cntr;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import dao.PlayerDao;
 import dao.TeamDao;
 import dao.TournamentsDao;
 import dao.UserDao;
+import dto.Player;
 import dto.Team;
 import dto.Tournament;
 import dto.User;
@@ -24,7 +28,22 @@ public class UserController {
 	private TeamDao teamDao;
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private PlayerDao playerDao;
 	
+
+	public PlayerDao getPlayerDao() {
+		return playerDao;
+	}
+
+	public void setPlayerDao(PlayerDao playerDao) {
+		this.playerDao = playerDao;
+	}
+
+	public void setTournamentsDao(TournamentsDao tournamentsDao) {
+		this.tournamentsDao = tournamentsDao;
+	}
+
 	public UserDao getUserDao() {
 		return userDao;
 	}
@@ -108,7 +127,7 @@ public class UserController {
 
 	@RequestMapping(value="/preTournamentsRegistration.htm")
 	public String showregister(ModelMap model) {
-		model.put("tournament", new Tournament());
+		model.put("tournament", new Tournament()); 
 		return "tournamentsRegistration";
 	}
 
@@ -130,6 +149,18 @@ public class UserController {
 	public String showplayersList() {
 
 		return "playersList";
+	}
+	
+	@RequestMapping(value="/playerForm.htm")
+	public String showplayerForm(ModelMap model) {
+		model.put("player", new Player());
+		return "playerForm";
+	}
+	
+	@RequestMapping(value="/createPlayer.htm")
+	public String createplayer(Player player) {
+		playerDao.createTeam(player);
+		return "teamProfile";
 	}
 	
 	@RequestMapping(value="/preTeamForm.htm")

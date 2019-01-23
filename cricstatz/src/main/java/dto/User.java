@@ -10,11 +10,11 @@ import org.springframework.context.annotation.Scope;
 @Entity
 @Table(name="User")
 public class User {
-	
-	private String userName;
-	private String password;
 	@Id
 	private String emailId;
+	private String userName;
+	private String password;
+	
 	private String userRole;
 	public String getUserName() {
 		return userName;
