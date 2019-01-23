@@ -1,3 +1,6 @@
+<%@page import="dto.Player"%>
+<%@page import="java.util.List"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -64,17 +67,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<th scope="col">Location</th>
 				</tr>
 			</thead>
+	<%  List<Player> list = (List<Player>)request.getAttribute("playerList");
+		if(list!=null)
+		{
+			for(Player player: list)
+			{
+	%>
 			<tbody>
 				<tr>
 					<th scope="row">10</th>
-					<td>Mark</td>
-					<td>12</td>
-					<td>5</td>
-					<td>50</td>
-					<td>Mumbai</td>
+					<td><%=player.getPlayerId() %></td>
+					<td><%=player.getPlayerName() %></td>
+					<td><%=player.getTotal_4s() %></td>
+					<td><%=player.getTotal_6s() %></td>
+					<td><%=player.getPlayerTotalRuns() %></td>
 				</tr>
 
 			</tbody>
+			
+<%
+		}
+	}
+%>
 		</table>
 	</div>
 

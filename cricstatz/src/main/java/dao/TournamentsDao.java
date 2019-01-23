@@ -11,7 +11,9 @@ import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
+import dto.Team;
 import dto.Tournament;
+import dto.User;
 
 @Repository
 public class TournamentsDao {
@@ -58,5 +60,30 @@ public class TournamentsDao {
 			}
 		});
 		return list;
+	}
+
+	public Tournament getTournament(User user) {
+
+		Tournament tournament = hibernateTemplate.execute(new HibernateCallback<Tournament>() {
+
+			public Tournament doInHibernate(Session session) throws HibernateException {
+				Transaction t = session.beginTransaction();
+				Query q = session.createQuery("from Tournament where emailId = ?");
+				q.setString(0,user.getEmailId());
+				List<Tournament> tournamentList = q.list();
+				if(tournamentList.isEmpty()!=true)
+				{
+					for(Tournament tournament : tournamentList)
+					{
+						return tournament;
+					}
+				}
+				t.commit();
+				session.flush();
+				session.close();
+				return null;
+			}
+		});
+		return tournament;
 	}
 }

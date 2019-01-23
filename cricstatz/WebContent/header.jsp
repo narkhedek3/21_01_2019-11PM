@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spr" uri="http://www.springframework.org/tags/form" %>
+<%@page import="dto.User"%>
 
 <!DOCTYPE html>
 <html lang="zxx">
@@ -36,12 +37,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
         <div class="w3layouts_header_left">
             <ul>
+            <% if(session.getAttribute("user")==null) {%>
+            
                 <li><a href="loginPage.htm" ><i class="fa fa-user" aria-hidden="true"></i>
                         Log in</a></li>
                 <li><a href="signUpPage.htm" ><i class="fa fa-pencil-square-o"
                             aria-hidden="true"></i>
                         Sign up</a></li>
                 <li>
+              <% } %>
+              <% if(session.getAttribute("user")!=null){ %>
+              	 <%User  u  =(User)session.getAttribute("user"); %>
+              	 <li style="font-size: 30px;color: white;"><%=u.getUserName()%></li>
+                 <li><a href="signOut.htm" ><i class="fa fa-pencil-square-o"
+                            aria-hidden="true"></i>
+                        Sign Out</a></li>
+                <li>
+               <% }%>
                     <form action="#" method="post">
                         <input type="search" id="search" class="form" style="display: none;border-radius: 10px; margin-right:5px;"
                             name="Search" style="width:160px;margin-right: 20px" placeholder="Search Keywords..."

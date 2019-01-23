@@ -12,6 +12,7 @@ import org.springframework.orm.hibernate4.HibernateCallback;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
+import dto.Team;
 import dto.User;
 
 @Repository
@@ -61,6 +62,25 @@ import dto.User;
 					session.flush();
 					session.close();
 					return ul;
+				}
+			});
+			return list;
+		}
+		
+		
+		public List<Team> getTeam(String emailId) {
+			List<Team> list = hibernateTemplate.execute(new HibernateCallback<List<Team>>() {
+
+				@Override
+				public List<Team> doInHibernate(Session session) throws HibernateException {
+					Transaction t = session.beginTransaction();
+					Query q = session.createQuery("from Team where emailId = ?");
+					q.setString(0, emailId);				
+					List<Team> tl = q.list();
+					t.commit();					
+					session.flush();
+					session.close();
+					return tl;
 				}
 			});
 			return list;

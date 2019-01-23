@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import dto.Team;
 import dto.Tournament;
+import dto.User;
 
 @Repository
 public class TeamDao {
@@ -60,5 +61,29 @@ public class TeamDao {
 		});
 		return list;
 	}
+	
+	public Team getTeam(User user) {
 
+		Team team = hibernateTemplate.execute(new HibernateCallback<Team>() {
+
+			public Team doInHibernate(Session session) throws HibernateException {
+				Transaction t = session.beginTransaction();
+				Query q = session.createQuery("from Team where emailId = ?");
+				q.setString(0,user.getEmailId());
+				List<Team> teamList = q.list();
+				if(teamList.isEmpty()!=true)
+				{
+					for(Team team : teamList)
+					{
+						return team;
+					}
+				}
+				t.commit();
+				session.flush();
+				session.close();
+				return null;
+			}
+		});
+		return team;
+	}
 }

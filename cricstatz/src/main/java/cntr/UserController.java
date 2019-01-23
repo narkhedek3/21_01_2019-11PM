@@ -1,8 +1,11 @@
 package cntr;
 
+import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sound.midi.Soundbank;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +33,9 @@ public class UserController {
 	private UserDao userDao;
 	@Autowired
 	private PlayerDao playerDao;
+	
+	
+	
 	
 
 	public PlayerDao getPlayerDao() {
@@ -99,7 +105,7 @@ public class UserController {
 	
 	
 	@RequestMapping(value="/loginStatus.htm")
-	public String validateUser(final User user ,ModelMap model) {
+	public String validateUser(final User user ,ModelMap model,HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		List<User> list = userDao.login(user);
 		if( list.isEmpty() )
 		{
@@ -111,13 +117,62 @@ public class UserController {
 		{
 			if(u.getUserRole().equals("Tournament Representative"))
 			{
+				model.put("tournament", new Tournament());
+				session.setAttribute("user", u);
+				System.out.println("0****************************");
+				Tournament specificTournament = tournamentsDao.getTournament(u);
+				System.out.println(specificTournament+"*************");
+				if(specificTournament==null)
+				{
+					try {
+						System.out.println("1****************************");
+						response.sendRedirect("preTournamentsRegistration.htm");
+						System.out.println("2****************************");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}	
+					
 				return "tournamentProfile";
+				
+				
 			}
-			return "teamProfile";
+			else {
+
+				model.put("team", new Team());
+				session.setAttribute("user", u);
+				Team specificTeam = teamDao.getTeam(u);				
+				if(specificTeam==null)
+				{
+					try {
+						response.sendRedirect("preTeamForm.htm");
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				return "teamProfile";
+
+			}
 		}
 		
 		return "loginPage";
+		
 	}
+	
+	
+	@RequestMapping(value="/signOut.htm")
+	public void signout(HttpSession session,HttpServletRequest request, HttpServletResponse response) {
+		session.invalidate(); 
+		request.getSession(true);
+		try {
+			response.sendRedirect(request.getContextPath() + "/index.htm");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}	
+
 
 	@RequestMapping(value="/livescores.htm")
 	public String showLiveScores() {
@@ -135,7 +190,7 @@ public class UserController {
 	public String showtournaments(Tournament tournament , ModelMap model) {
 		tournamentsDao.createTournament(tournament);
 		model.put("tournamnet",tournament);
-		return "tournaments";
+		return "tournamentProfile";
 	}
 
 	@RequestMapping(value="/tournaments.htm")
@@ -146,8 +201,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/playersList.htm")
-	public String showplayersList() {
-
+	public String showplayersList(ModelMap model) {
+		List<Team> teamList = teamDao.selectTeam();
+		model.put("teamList", teamList);
 		return "playersList";
 	}
 	
@@ -159,7 +215,7 @@ public class UserController {
 	
 	@RequestMapping(value="/createPlayer.htm")
 	public String createplayer(Player player) {
-		playerDao.createTeam(player);
+		playerDao.createPlayer(player);
 		return "teamProfile";
 	}
 	

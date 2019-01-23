@@ -1,10 +1,14 @@
 package dto;
 
+
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.springframework.context.annotation.Scope;
+
+
 
 @Scope("session")
 @Entity
@@ -13,9 +17,17 @@ public class User {
 	@Id
 	private String emailId;
 	private String userName;
-	private String password;
-	
+	private String password;	
 	private String userRole;
+
+
+
+	public User() {
+		super();
+
+	}
+
+
 	public String getUserName() {
 		return userName;
 	}
@@ -40,10 +52,7 @@ public class User {
 	public void setUserRole(String userRole) {
 		this.userRole = userRole;
 	}
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
 	public User(String emailId) {
 		super();
 		this.emailId = emailId;
@@ -60,7 +69,7 @@ public class User {
 		return "User [userName=" + userName + ", password=" + password + ", emailId=" + emailId + ", userRole="
 				+ userRole + "]";
 	}
-	
 
-	
+
+
 }

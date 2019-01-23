@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spr" uri="http://www.springframework.org/tags/form"%>
+<%@page import="dto.User"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,10 +44,10 @@
 				<label>Tournament Name</label>
 				<spr:input type="text" class="form-control" path="tournamentName" />
 			</div>
-			
+			<%User user = (User)session.getAttribute("user"); %>
 		 	<div class="form-group">
 				<label>Organizer Email ID</label>
-				<spr:input type="email" class="form-control" path="emailId" />
+				<spr:input type="email" class="form-control" path="emailId" value="<%=user.getEmailId()%>" readonly="true" />
 			</div>
 
 			<div class="form-group">

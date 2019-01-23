@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import dto.Player;
+import dto.Tournament;
 
 
 @Repository
@@ -26,7 +28,7 @@ public class PlayerDao {
 		this.hibernateTemplate = hibernateTemplate;
 	}
 	
-	public void createTeam(final Player player) {
+	public void createPlayer(final Player player) {
 		hibernateTemplate.execute(new HibernateCallback<List<Player>>() {
 
 			public List<Player> doInHibernate(Session session) throws HibernateException {
@@ -40,4 +42,20 @@ public class PlayerDao {
 		});
 	}
 	
+public List<Player> selectPlayer() {
+		
+		List<Player> list = hibernateTemplate.execute(new HibernateCallback<List<Player>>() {
+
+			public List<Player> doInHibernate(Session session) throws HibernateException {
+				Transaction t = session.beginTransaction();
+				Query q = session.createQuery("from Player");
+				List<Player> playerList = q.list();
+				t.commit();
+				session.flush();
+				session.close();
+				return playerList;
+			}
+		});
+		return list;
+	}
 }
