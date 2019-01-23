@@ -226,10 +226,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/postTeamForm.htm")
-	public String TeamFormSuccess(Team team,ModelMap model) {
-		teamDao.createTeam(team);
-		model.put("team", team);
-		return "teamList";
+	public String TeamFormSuccess(Team team) {
+		teamDao.createTeam(team);		
+		return "teamProfile";
 	}
 	
 	@RequestMapping(value="/teamList.htm")

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="spr" uri="http://www.springframework.org/tags/form"%>
+<%@ page import="dto.User" %>
+<%@ page import="dao.TeamDao" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -51,6 +53,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="login-form">
 			<spr:form commandName="player" action="createPlayer.htm" method="post">
 				<spr:input placeholder="Player Name" required="" path="playerName" />
+				
+				<%User user = (User)session.getAttribute("user");
+					TeamDao teamDao = new TeamDao();		
+					
+				%>
+				<spr:input readonly="true" path="teamId" value="<%=teamDao.getTeam(user).getTeamId() %>"/>
 				<input type="text" placeholder="Age"  />
 				<input type="text" placeholder="Location" />				
 				<div class="tp">

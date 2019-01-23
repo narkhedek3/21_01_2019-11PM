@@ -71,7 +71,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							method="post">
 							<spr:input placeholder="Team Name" required="" path="teamName" />
 							<%User user = (User)session.getAttribute("user"); %>
-							<spr:input placeholder="Email Id" required="" disabled="true" path="emailId" value="<%=user.getEmailId()%>" />						
+							<spr:input placeholder="Email Id" required="" readonly="true" path="emailId" value="<%=user.getEmailId()%>" />						
 							<input type="text" placeholder="Location" />
 							<div class="tp">
 								<input type="submit" value="Create">

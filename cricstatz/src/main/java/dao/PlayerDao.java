@@ -12,6 +12,7 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import dto.Player;
+import dto.Team;
 import dto.Tournament;
 
 
@@ -27,7 +28,7 @@ public class PlayerDao {
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
 		this.hibernateTemplate = hibernateTemplate;
 	}
-	
+
 	public void createPlayer(final Player player) {
 		hibernateTemplate.execute(new HibernateCallback<List<Player>>() {
 
@@ -41,14 +42,32 @@ public class PlayerDao {
 			}
 		});
 	}
-	
-public List<Player> selectPlayer() {
-		
+
+	public List<Player> selectPlayer() {
+
 		List<Player> list = hibernateTemplate.execute(new HibernateCallback<List<Player>>() {
 
 			public List<Player> doInHibernate(Session session) throws HibernateException {
 				Transaction t = session.beginTransaction();
 				Query q = session.createQuery("from Player");
+				List<Player> playerList = q.list();
+				t.commit();
+				session.flush();
+				session.close();
+				return playerList;
+			}
+		});
+		return list;
+	}
+	
+	public List<Player> selectPlayerWithTeamId(Team team) {
+
+		List<Player> list = hibernateTemplate.execute(new HibernateCallback<List<Player>>() {
+
+			public List<Player> doInHibernate(Session session) throws HibernateException {
+				Transaction t = session.beginTransaction();
+				Query q = session.createQuery("from Player where teamId= ?");
+				q.setLong(0, team.getTeamId());
 				List<Player> playerList = q.list();
 				t.commit();
 				session.flush();

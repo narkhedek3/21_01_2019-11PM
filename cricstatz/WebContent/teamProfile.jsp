@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="dao.PlayerDao" %>
+<%@ page import="dao.TeamDao" %>
+<%@ page import="dto.User" %>
+<%@ page import="dto.Team" %>
+<%@ page import="dto.Player" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -34,7 +40,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <body>
 	<!-- banner -->
 	<jsp:include page="header.jsp"></jsp:include>
-
+	<%	
+		PlayerDao playerDao = new PlayerDao();
+		TeamDao teamDao = new TeamDao();
+		User user = (User)session.getAttribute("user");
+		Team team = teamDao.getTeam(user);
+		List<Player> playerList = playerDao.selectPlayerWithTeamId(team);
+	%>
 
 	<!-- /banner -->
 	<div class="banner1">
@@ -53,14 +65,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="agile_team_grids_top">
 				<div class="col-md-6 w3ls_banner_bottom_left w3ls_courses_left">
 					<div class="w3ls_banner_bottom_right1">
-						<h2>TEAM NAME</h2>
+						<h2><%=team.getTeamName() %></h2>
 
 						<ul class="some_agile_facts">
 							<li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>TEAM
-								ID</li>
+								ID : <%=team.getTeamId() %></li>
 							<li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>NUMBER
-								OF PLAYERS</li>
-							<li><i class="fa fa-long-arrow-right" aria-hidden="true"></i>LOCATION</li>
+								OF PLAYERS : </li>
+							
 							<li><i class="fa fa-long-arrow" aria-hidden="true"></i>
 								<button class="btn btn-primary">EDIT PROFILE</button></li>
 						</ul>
@@ -83,13 +95,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</tr>
 					</thead>
 					<tbody>
+						<%
+							for(Player player : playerList)
+							{
+							
+						%>
 						<tr>
 							<th scope="row">1</th>
-							<td>Mark</td>
+							<td><%= player.getPlayerName() %></td>
 							<td>12</td>
 							<td>50</td>
 						</tr>
-
+						<% } %>
 					</tbody>
 				</table>
 			</div>
